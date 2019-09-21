@@ -280,9 +280,9 @@ class DashdSSH(object):
         try:
             # find dashd process id if running
             try:
-                pids = self.remote_command('ps -C "nixd" -o pid')
+                pids = self.remote_command('ps -C "mued" -o pid')
             except UnknownError:
-                raise Exception('is nixd running on the remote machine?')
+                raise Exception('is mued running on the remote machine?')
             pid = None
             if isinstance(pids, list):
                 pids = [pid.strip() for pid in pids]
@@ -293,14 +293,14 @@ class DashdSSH(object):
             config = {}
             if pid:
                 dashd_running = True
-                # using dashd pid find its executable path and then .nix directory and finally nix.conf file
+                # using dashd pid find its executable path and then .mue directory and finally mue.conf file
                 executables = self.remote_command('ls -l /proc/' + str(pid) + '/exe')
                 if executables and len(executables) >= 1:
                     elems = executables[0].split('->')
                     if len(elems) == 2:
                         executable = elems[1].strip()
                         dashd_dir = os.path.dirname(executable)
-                        dash_conf_file = dashd_dir + '/.nix/nix.conf'
+                        dash_conf_file = dashd_dir + '/.monetaryunit/mue.conf'
                         conf_lines = []
                         try:
                             conf_lines = self.remote_command('cat ' + dash_conf_file)
@@ -312,13 +312,13 @@ class DashdSSH(object):
                                 elems = cwd_lines[0].split('->')
                                 if len(elems) >= 2:
                                     cwd = elems[1]
-                                    dash_conf_file = cwd + '/.nix/nix.conf'
+                                    dash_conf_file = cwd + '/.monetaryunit/mue.conf'
                                     try:
                                         conf_lines = self.remote_command('cat ' + dash_conf_file)
                                     except Exception as e:
                                         # second method did not suceed, so assume, that conf file is located
-                                        # i /home/<username>/.nix directory
-                                        dash_conf_file = '/' + self.username + '/.nix/nix.conf'
+                                        # i /home/<username>/.mue directory
+                                        dash_conf_file = '/' + self.username + '/.monetaryunit/mue.conf'
                                         if self.username != 'root':
                                             dash_conf_file = '/home' + dash_conf_file
                                         conf_lines = self.remote_command('cat ' + dash_conf_file)
@@ -349,13 +349,13 @@ class DashdIndexException(JSONRPCException):
     def __init__(self, parent_exception):
         JSONRPCException.__init__(self, parent_exception.error)
         self.message = self.message + \
-                       '\n\nMake sure the nixd daemon you are connecting to has the following options enabled in ' \
-                       'its nix.conf:\n\n' + \
+                       '\n\nMake sure the mued daemon you are connecting to has the following options enabled in ' \
+                       'its mue.conf:\n\n' + \
                        'addressindex=1\n' + \
                        'spentindex=1\n' + \
                        'timestampindex=1\n' + \
                        'txindex=1\n\n' + \
-                       'Changing these parameters requires to execute nixd with "-reindex" option (linux: ./nixd -reindex)'
+                       'Changing these parameters requires to execute mued with "-reindex" option (linux: ./mued -reindex)'
 
 
 def control_rpc_call(func):
@@ -665,7 +665,7 @@ class DashdInterface(WndUtils):
         """
         try:
             if not self.cur_conn_def:
-                raise Exception('There is no connections to NIX network enabled in the configuration.')
+                raise Exception('There is no connections to MUE network enabled in the configuration.')
 
             while True:
                 try:
@@ -834,10 +834,10 @@ class DashdInterface(WndUtils):
             if verify_node:
                 node_under_testnet = info.get('testnet')
                 if self.config.is_testnet() and not node_under_testnet:
-                    raise Exception('This RPC node works under NIX MAINNET, but your current configuration is '
+                    raise Exception('This RPC node works under MUE MAINNET, but your current configuration is '
                                     'for TESTNET.')
                 elif self.config.is_mainnet() and node_under_testnet:
-                    raise Exception('This RPC node works under NIX TESTNET, but your current configuration is '
+                    raise Exception('This RPC node works under MUE TESTNET, but your current configuration is '
                                     'for MAINNET.')
             return info
         else:
@@ -850,31 +850,31 @@ class DashdInterface(WndUtils):
             if self.cur_conn_def.is_http_proxy():
                 return True
             else:
-                syn = self.proxy.ghostsync('status')
+                syn = self.proxy.muesync('status')
                 return syn.get('IsSynced')
         else:
             raise Exception('Not connected')
 
     @control_rpc_call
-    def ghostsync(self):
+    def muesync(self):
         if self.open():
             # if connecting to HTTP(S) proxy do not call this function - it will not be exposed
             if self.cur_conn_def.is_http_proxy():
                 return {}
             else:
-                return self.proxy.ghostsync('status')
+                return self.proxy.muesync('status')
         else:
             raise Exception('Not connected')
 
     @control_rpc_call
-    def ghostnodebroadcast(self, what, hexto):
+    def muenodebroadcast(self, what, hexto):
         if self.open():
             # if what == 'relay':
             if False:
-                # FIXME: relay does not report correct status without 3rd parameter due to bug in nixd
-                return self.proxy.ghostnodebroadcast(what, hexto, "not-safe")
+                # FIXME: relay does not report correct status without 3rd parameter due to bug in mued
+                return self.proxy.muenodebroadcast(what, hexto, "not-safe")
             else:
-                return self.proxy.ghostnodebroadcast(what, hexto)
+                return self.proxy.muenodebroadcast(what, hexto)
         else:
             raise Exception('Not connected')
 
@@ -915,10 +915,10 @@ class DashdInterface(WndUtils):
                      (str(duration1), str(duration2), str(duration3)))
 
     @control_rpc_call
-    def get_ghostnodelist(self, *args, data_max_age=MASTERNODES_CACHE_VALID_SECONDS):
+    def get_muenodelist(self, *args, data_max_age=MASTERNODES_CACHE_VALID_SECONDS):
         """
         Returns masternode list, read from the Dash network or from the internal cache.
-        :param args: arguments passed to the 'ghostnodelist' RPC call
+        :param args: arguments passed to the 'muenodelist' RPC call
         :param data_max_age: maximum age (in seconds) of the cached masternode data to used; if the
             cache is older than 'data_max_age', then an RPC call is performed to load newer masternode data;
             value of 0 forces reading of the new data from the network
@@ -927,7 +927,7 @@ class DashdInterface(WndUtils):
         def parse_mns(mns_raw):
             """
             Parses dictionary of strings returned from the RPC to Masternode object list.
-            :param mns_raw: Dict of masternodes in format of RPC ghostnodelist command
+            :param mns_raw: Dict of masternodes in format of RPC muenodelist command
             :return: list of Masternode object
             """
             tm_begin = time.time()
@@ -949,7 +949,7 @@ class DashdInterface(WndUtils):
                     mn.ident = mn_id
                     ret_list.append(mn)
             duration = time.time() - tm_begin
-            logging.info('Parse ghostnodelist time: ' + str(duration))
+            logging.info('Parse muenodelist time: ' + str(duration))
             return ret_list
 
         def update_masternode_data(existing_mn, new_data, cursor):
@@ -984,11 +984,11 @@ class DashdInterface(WndUtils):
 
                 if self.masternodes and data_max_age > 0 and \
                    int(time.time()) - last_read_time < data_max_age:
-                    logging.info('Using cached ghostnodelist (data age: %s)' % str(int(time.time()) - last_read_time))
+                    logging.info('Using cached muenodelist (data age: %s)' % str(int(time.time()) - last_read_time))
                     return self.masternodes
                 else:
-                    logging.info('Loading masternode list from NIX daemon...')
-                    mns = self.proxy.ghostnodelist(*args)
+                    logging.info('Loading masternode list from MUE daemon...')
+                    mns = self.proxy.muenodelist(*args)
                     mns = parse_mns(mns)
                     logging.info('Finished loading masternode list')
 
@@ -1050,7 +1050,7 @@ class DashdInterface(WndUtils):
 
                     return self.masternodes
             else:
-                mns = self.proxy.ghostnodelist(*args)
+                mns = self.proxy.muenodelist(*args)
                 mns = parse_mns(mns)
                 return mns
         else:
