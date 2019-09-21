@@ -2,7 +2,7 @@
 
 [![Build Status Travis CI](hhttps://github.com/sotblad/muenode-tool.svg?branch=master)](https://github.com/sotblad/muenode-tool) [![Build status AppVeyor](https://ci.appveyor.com/api/projects/status/kkcf324yn6dn6woj/branch/master?svg=true)](https://ci.appveyor.com/project/sotblad/muenode-tool/branch/master)
 
-The main purpose of the application is to give MUEnode (MUE masternode) operators the ability to send the "start Ghostnode" command through an easy to use a graphical user interface if the MUEnode collateral is controlled by a hardware wallet such as Trezor or Ledger.
+The main purpose of the application is to give MUEnode (MUE masternode) operators the ability to send the "start MUEnode" command through an easy to use a graphical user interface if the MUEnode collateral is controlled by a hardware wallet such as Trezor or Ledger.
 
 MUEnode Tool is based on [Dash Masternode Tool (DMT)](https://github.com/Bertrand256/dash-masternode-tool) by Bertrand256. MUenodes and Dash masternodes are very similar, so most of the [original DMT documentation](README-DMT.md) still applies to MUEnode Tool as well.
 
