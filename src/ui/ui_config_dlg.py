@@ -241,7 +241,7 @@ class Ui_ConfigDlg(object):
     def retranslateUi(self, ConfigDlg):
         _translate = QtCore.QCoreApplication.translate
         ConfigDlg.setWindowTitle(_translate("ConfigDlg", "Dialog"))
-        self.label_2.setText(_translate("ConfigDlg", "NIX network:"))
+        self.label_2.setText(_translate("ConfigDlg", "MUE network:"))
         self.cboDashNetwork.setItemText(0, _translate("ConfigDlg", "MAINNET"))
         self.cboDashNetwork.setItemText(1, _translate("ConfigDlg", "TESTNET"))
         self.btnNewConn.setToolTip(_translate("ConfigDlg", "Add New Connection"))
@@ -252,7 +252,7 @@ class Ui_ConfigDlg(object):
         self.label.setText(_translate("ConfigDlg", "Connections:"))
         self.chbRandomConn.setToolTip(_translate("ConfigDlg", "Pick random connection to distribute clients\' load over multiple nodes."))
         self.chbRandomConn.setText(_translate("ConfigDlg", "Pick random connection"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabDashd), _translate("ConfigDlg", "NIX network"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabDashd), _translate("ConfigDlg", "MUE network"))
         self.label_3.setText(_translate("ConfigDlg", "Hardware wallet:"))
         self.chbHwTrezor.setText(_translate("ConfigDlg", "Trezor"))
         self.chbHwKeepKey.setText(_translate("ConfigDlg", "KeepKey"))
