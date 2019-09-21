@@ -192,7 +192,7 @@ class AppConfig(object):
 
         # setup logging
         self.log_dir = os.path.join(app_user_dir, 'logs')
-        self.log_file = os.path.join(self.log_dir, 'ghostnode-tool.log')
+        self.log_file = os.path.join(self.log_dir, 'muenode-tool.log')
         if not os.path.exists(self.log_dir):
             os.makedirs(self.log_dir)
 
