@@ -75,10 +75,10 @@ class AppConfig(object):
 
         self.dash_network = 'MAINNET'
 
-        self.block_explorer_tx_mainnet = 'https://blockchain.nixplatform.io/tx/%TXID%'
-        self.block_explorer_addr_mainnet = 'https://blockchain.nixplatform.io/address/%ADDRESS%'
-        self.block_explorer_tx_testnet = 'https://blockchain.nixplatform.io/tx/%TXID%'
-        self.block_explorer_addr_testnet = 'https://blockchain.nixplatform.io/address/%ADDRESS%'
+        self.block_explorer_tx_mainnet = 'https://blockbook.monetaryunit.org/tx/%TXID%'
+        self.block_explorer_addr_mainnet = 'https://blockbook.monetaryunit.org/address/%ADDRESS%'
+        self.block_explorer_tx_testnet = 'https://blockbook.monetaryunit.org/tx/%TXID%'
+        self.block_explorer_addr_testnet = 'https://blockbook.monetaryunit.org/address/%ADDRESS%'
         self.dash_central_proposal_api = 'https://www.dashcentral.org/api/v1/proposal?hash=%HASH%'
 
         self.check_for_updates = True
@@ -110,7 +110,7 @@ class AppConfig(object):
         # runtime information, set after connecting to hardware wallet device; for Dash mainnet the value is
         # 'Dash', for Dash testnet, the value is 'Dash Testnet' or 'tDash' depending on the (custom) firmware
         # used
-        self.hw_coin_name = 'NIX'
+        self.hw_coin_name = 'MUE'
 
         # attributes related to encryption cache data with hardware wallet:
         self.hw_generated_key = b"\xab\x0fs}\x8b\t\xb4\xc3\xb8\x05\xba\xd1\x96\x9bq`I\xed(8w\xbf\x95\xf0-\x1a\x14\xcb\x1c\x1d+\xcd"
