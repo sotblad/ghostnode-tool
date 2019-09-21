@@ -939,7 +939,7 @@ class MasternodeConfig:
     def __init__(self):
         self.name = ''
         self.ip = ''
-        self.port = '6214'
+        self.port = '19687'
         self.privateKey = ''
         self.collateralBip32Path = ''
         self.collateralAddress = ''
