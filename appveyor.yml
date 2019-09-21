@@ -59,7 +59,7 @@ install:
   - "%CMD_IN_ENV% pip install -r requirements.txt"
 
 build_script:
-  - "%CMD_IN_ENV% pyinstaller ghostnode-tool.spec"
+  - "%CMD_IN_ENV% pyinstaller muenode-tool.spec"
 
 artifacts:
   # Archive the generated packages in the ci.appveyor.com build report.
@@ -69,7 +69,7 @@ deploy:
   provider: GitHub
   auth_token:
     secure: 0Hw2mGLwuUXpe00boWC3Fh+yxHODOrRHuCM4ILQyntL4TRZmWCyj8c875RlH0Nim
-  artifact: /GhostnodeTool_.*\.zip/
+  artifact: /MUEnodeTool_.*\.zip/
   prerelease: true
   on:
     appveyor_repo_tag: true
