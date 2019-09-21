@@ -37,7 +37,7 @@ if __name__ == '__main__':
     ui.show()
 
     try:
-        ico_path = os.path.join(app_path, 'img', 'ghostnode-tool.ico')
+        ico_path = os.path.join(app_path, 'img', 'muenode-tool.ico')
         if os.path.exists(ico_path):
             app_icon = QIcon(ico_path)
             app.setWindowIcon(app_icon)
