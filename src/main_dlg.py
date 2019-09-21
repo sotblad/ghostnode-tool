@@ -1137,7 +1137,7 @@ class MainWindow(QMainWindow, WndUtils, ui_main_dlg.Ui_MainWindow):
         if copy_values_from_current and cur_masternode_sav:
             mn_template = cur_masternode_sav.name
         else:
-            mn_template = 'GN'
+            mn_template = 'MN'
         name_found = None
         for nr in range(1, 100):
             exists = False
