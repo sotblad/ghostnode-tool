@@ -23,8 +23,8 @@ with open(os.path.join(base_dir, 'version.txt')) as fptr:
             break
 
 add_files = [
- ('img/ghostnode-tool.png','/img'),
- ('img/ghostnode-tool.ico','/img'),
+ ('img/muenode-tool.png','/img'),
+ ('img/muenode-tool.ico','/img'),
  ('img/arrow-right.ico','/img'),
  ('img/hw-disconnect.png','/img'),
  ('img/hw-test.png','/img'),
@@ -68,7 +68,7 @@ lib_path = next(p for p in sys.path if 'site-packages' in p)
 add_files.append( (os.path.join(lib_path, 'bitcoin/english.txt'),'/bitcoin') )
 add_files.append( (os.path.join(lib_path, 'mnemonic/wordlist/english.txt'),'/mnemonic/wordlist') )
 
-a = Analysis(['src/ghostnode_tool.py'],
+a = Analysis(['src/muenode_tool.py'],
              pathex=[base_dir],
              binaries=[],
              datas=add_files,
@@ -92,17 +92,17 @@ exe = EXE(pyz,
           a.binaries,
           a.zipfiles,
           a.datas,
-          name='GhostnodeTool',
+          name='MUEnodeTool',
           debug=False,
           strip=False,
           upx=False,
           console=False,
-		  icon=os.path.join('img',('ghostnode-tool.%s' % ('icns' if os_type=='darwin' else 'ico'))))
+		  icon=os.path.join('img',('muenode-tool.%s' % ('icns' if os_type=='darwin' else 'ico'))))
 
 if os_type == 'darwin':
     app = BUNDLE(exe,
-                 name='GhostnodeTool.app',
-                 icon='img/ghostnode-tool.icns',
+                 name='MUEnodeTool.app',
+                 icon='img/muenode-tool.icns',
                  bundle_identifier=None,
                      info_plist={
                         'NSHighResolutionCapable': 'True'
@@ -121,16 +121,16 @@ os.chdir(dist_path)
 
 if os_type == 'win32':
     print('Compressing Windows executable')
-    filename = os.path.join(all_bin_dir, 'GhostnodeTool_' + version_str + '.win' + no_bits + '.zip')
-    os.system('"7z.exe" a %s %s -mx0' % (filename,  'GhostnodeTool.exe'))
+    filename = os.path.join(all_bin_dir, 'MUEnodeTool_' + version_str + '.win' + no_bits + '.zip')
+    os.system('"7z.exe" a %s %s -mx0' % (filename,  'MUEnodeTool.exe'))
 elif os_type == 'darwin':
     print('Compressing Mac executable')
-    filename = os.path.join(all_bin_dir, 'GhostnodeTool_' + version_str + '.mac.zip')
-    os.system('zip -r "%s" "%s"' % (filename,  'GhostnodeTool.app'))
+    filename = os.path.join(all_bin_dir, 'MUEnodeTool_' + version_str + '.mac.zip')
+    os.system('zip -r "%s" "%s"' % (filename,  'MUEnodeTool.app'))
 elif os_type == 'linux':
     print('Compressing Linux executable')
-    filename = os.path.join(all_bin_dir, 'GhostnodeTool_' + version_str + '.linux.tar.gz')
-    os.system('tar -zcvf %s %s' % (filename,  'GhostnodeTool'))
+    filename = os.path.join(all_bin_dir, 'MUEnodeTool_' + version_str + '.linux.tar.gz')
+    os.system('tar -zcvf %s %s' % (filename,  'MUEnodeTool'))
 
 print('SHA-256 of %s:' % filename)
 sha256_hash = hashlib.sha256()
