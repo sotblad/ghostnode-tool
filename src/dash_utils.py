@@ -28,23 +28,23 @@ class ChainParams(object):
 
 
 class ChainParamsMainNet(ChainParams):
-    B58_PREFIXES_PUBKEY_ADDRESS = ['G']
-    B58_PREFIXES_SCRIPT_ADDRESS = ['N']
-    B58_PREFIXES_SECRET_KEY = ['t']
-    PREFIX_PUBKEY_ADDRESS = 38
-    PREFIX_SCRIPT_ADDRESS = 53
-    PREFIX_SECRET_KEY = 128
-    BIP44_COIN_TYPE = 400
+    B58_PREFIXES_PUBKEY_ADDRESS = ['7']
+    B58_PREFIXES_SCRIPT_ADDRESS = ['X']
+    B58_PREFIXES_SECRET_KEY = ['5']
+    PREFIX_PUBKEY_ADDRESS = 16
+    PREFIX_SCRIPT_ADDRESS = 76
+    PREFIX_SECRET_KEY = 126
+    BIP44_COIN_TYPE = 31
 
 
 class ChainParamsTestNet(ChainParams):
-    B58_PREFIXES_PUBKEY_ADDRESS = ['G']
-    B58_PREFIXES_SCRIPT_ADDRESS = ['N']
-    B58_PREFIXES_SECRET_KEY = ['t']
-    PREFIX_PUBKEY_ADDRESS = 38
-    PREFIX_SCRIPT_ADDRESS = 53
-    PREFIX_SECRET_KEY = 128
-    BIP44_COIN_TYPE = 400
+    B58_PREFIXES_PUBKEY_ADDRESS = ['7']
+    B58_PREFIXES_SCRIPT_ADDRESS = ['X']
+    B58_PREFIXES_SECRET_KEY = ['5']
+    PREFIX_PUBKEY_ADDRESS = 16
+    PREFIX_SCRIPT_ADDRESS = 76
+    PREFIX_SECRET_KEY = 126
+    BIP44_COIN_TYPE = 31
 
 
 def get_chain_params(dash_network: str) -> typing.ClassVar[ChainParams]:
@@ -215,7 +215,7 @@ def wif_to_privkey(wif_key: str, dash_network: str):
 
 def wif_privkey_to_uncompressed(wif_key: str):
     privkey_encoded = base58.b58decode(wif_key)
-    if len(privkey_encoded) == 38 and privkey_encoded[33] == 0x01:
+    if len(privkey_encoded) == 16 and privkey_encoded[33] == 0x01:
         # [1-byte prefix][32-byte privkey][optional 1-byte compression suffix][4-byte checksum]
         data = privkey_encoded[:33]
         checksum = bitcoin.bin_dbl_sha256(data)[0:4]
