@@ -588,7 +588,7 @@ class Ui_HwInitializeDlg(object):
         self.label.setText(_translate("HwInitializeDlg", "Passphrase:"))
         self.btnRefreshAddressesPreview.setText(_translate("HwInitializeDlg", "Apply and reload addresses"))
         self.edtHwOptionsBip32Path.setText(_translate("HwInitializeDlg", "44\'/5\'/0\'/0/0"))
-        self.label_5.setText(_translate("HwInitializeDlg", "NIX addresses which will be available in the device after finishing the process:"))
+        self.label_5.setText(_translate("HwInitializeDlg", "MUE addresses which will be available in the device after finishing the process:"))
         self.lblHwOptionsMessage1.setText(_translate("HwInitializeDlg", "Entropy:"))
         self.lblStepSummaryTitle.setText(_translate("HwInitializeDlg", "<h2>Operation successfully finished</h2>"))
         self.lblFirmwareSource.setText(_translate("HwInitializeDlg", "<b>Choose the source of firmware</b>"))
