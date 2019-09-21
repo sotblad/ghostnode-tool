@@ -1,9 +1,9 @@
 [Desktop Entry]
-Comment=Ghostnode (NIX masternode) activation tool
-Exec=Ghostnode Tool
+Comment=MUEnode (MUE masternode) activation tool
+Exec=MUEnode Tool
 GenericName=Masternode activation tool
-Icon=ghostnode-tool
-Name=Ghostnode Tool
+Icon=muenode-tool
+Name=MUEnode Tool
 Categories=Finance;Network;
 StartupNotify=false
 Terminal=false
