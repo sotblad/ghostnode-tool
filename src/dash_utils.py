@@ -247,7 +247,7 @@ def electrum_sig_hash(message):
     """
     Based on project: https://github.com/chaeplin/dashmnb.
     """
-    padded = b"\x16NIX Signed Message:\n" + \
+    padded = b"\x16MonetaryUnit Signed Message:\n" + \
         num_to_varint(len(message)) + from_string_to_bytes(message)
     return bitcoin.dbl_sha256(padded)
 
