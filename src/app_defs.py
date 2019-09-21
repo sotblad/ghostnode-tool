@@ -4,10 +4,10 @@
 # Created on: 2018-03
 
 
-APP_NAME_SHORT = 'GhostnodeTool'
-APP_NAME_LONG = 'Ghostnode Tool'
-APP_DATA_DIR_NAME = '.ghostnode-tool'
-PROJECT_URL = 'https://github.com/nixplatform/ghostnode-tool'
+APP_NAME_SHORT = 'MUEnodeTool'
+APP_NAME_LONG = 'MUEnode Tool'
+APP_DATA_DIR_NAME = '.muenode-tool'
+PROJECT_URL = 'https://github.com/sotblad/muenode-tool'
 FEE_DUFF_PER_BYTE = 1
 MIN_TX_FEE = 10000
 SCREENSHOT_MODE = False
