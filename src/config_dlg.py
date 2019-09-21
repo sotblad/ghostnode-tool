@@ -700,9 +700,9 @@ class ConfigDlg(QDialog, Ui_ConfigDlg, WndUtils):
                 self.disable_cfg_update = True
                 if isinstance(dashd_conf, tuple) and len(dashd_conf) >= 3:
                     if not dashd_conf[0]:
-                        self.infoMsg('Remote NIX daemon seems to be shut down')
+                        self.infoMsg('Remote MUE daemon seems to be shut down')
                     elif not dashd_conf[1]:
-                        self.infoMsg('Could not find remote nix.conf file')
+                        self.infoMsg('Could not find remote mue.conf file')
                     else:
                         file = dashd_conf[2]
                         rpcuser = file.get('rpcuser', '')
@@ -727,17 +727,17 @@ class ConfigDlg(QDialog, Ui_ConfigDlg, WndUtils):
                             self.is_modified = modified
 
                         if file.get('server', '1') == '0':
-                            self.warnMsg("Remote nix.conf parameter 'server' is set to '0', so RPC interface will "
+                            self.warnMsg("Remote mue.conf parameter 'server' is set to '0', so RPC interface will "
                                          "not work.")
                         if not rpcuser:
-                            self.warnMsg("Remote nix.conf parameter 'rpcuser' is not set, so RPC interface will  "
+                            self.warnMsg("Remote mue.conf parameter 'rpcuser' is not set, so RPC interface will  "
                                          "not work.")
                         if not rpcpassword:
-                            self.warnMsg("Remote nix.conf parameter 'rpcpassword' is not set, so RPC interface will  "
+                            self.warnMsg("Remote mue.conf parameter 'rpcpassword' is not set, so RPC interface will  "
                                          "not work.")
                     self.update_connection_details_ui()
                 elif isinstance(dashd_conf, str):
-                    self.warnMsg("Couldn't read remote nixd configuration file due the following error: " +
+                    self.warnMsg("Couldn't read remote mued configuration file due the following error: " +
                                  dashd_conf)
                 ssh.disconnect()
             except Exception as e:
