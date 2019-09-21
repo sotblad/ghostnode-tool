@@ -35,4 +35,4 @@ deploy:
   prerelease: true
   on:
     tags: true
-    # repo: nixplatform/ghostnode-tool
+    # repo: sotblad/muenode-tool
