@@ -155,7 +155,7 @@ class SendFundsDestinationItem(QObject):
                 self.lbl_second_unit_value.setText('')
         elif self.values_unit == OUTPUT_VALUE_UNIT_PERCENT:
             if self.value_amount is not None:
-                self.lbl_second_unit_value.setText(app_utils.to_string(round(self.value_amount, 8)) + ' NIX')
+                self.lbl_second_unit_value.setText(app_utils.to_string(round(self.value_amount, 8)) + ' MUE')
             else:
                 self.lbl_second_unit_value.setText('')
 
@@ -388,7 +388,7 @@ class SendFundsDestination(QtWidgets.QWidget, WndUtils):
 
         # the last row of the grid layout is dedicated to 'fee' controls
         self.lbl_fee = QLabel(self.scroll_area_widget)
-        self.lbl_fee.setText('Fee [NIX]')
+        self.lbl_fee.setText('Fee [MUE]')
         self.lbl_fee.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.lay_addresses.addWidget(self.lbl_fee, 1, 0)
 
@@ -713,7 +713,7 @@ class SendFundsDestination(QtWidgets.QWidget, WndUtils):
             the_change_first_unit_str = app_utils.to_string(round(self.change_amount, 8))
         else:
             # pct
-            the_change_second_unit_str = app_utils.to_string(self.change_amount) + ' NIX'
+            the_change_second_unit_str = app_utils.to_string(self.change_amount) + ' MUE'
             if self.inputs_total_amount - self.fee_amount - self.add_to_fee > 0:
                 change_pct = (self.change_amount * 100) / (self.inputs_total_amount - self.fee_amount - self.add_to_fee)
             else:
@@ -882,7 +882,7 @@ class SendFundsDestination(QtWidgets.QWidget, WndUtils):
     def display_totals(self):
         recipients = self.get_number_of_recipients()
         bytes = (self.inputs_count * 148) + (recipients * 34) + 10
-        text = f'<span class="label"><b>Total value of selected inputs:</b>&nbsp;</span><span class="value">&nbsp;{self.inputs_total_amount} NIX&nbsp;</span>'
+        text = f'<span class="label"><b>Total value of selected inputs:</b>&nbsp;</span><span class="value">&nbsp;{self.inputs_total_amount} MUE&nbsp;</span>'
         if self.inputs_total_amount > 0:
             text += f'<span class="label">&nbsp;<b>Inputs:</b>&nbsp;</span><span class="value">&nbsp;{self.inputs_count}&nbsp;</span>' \
                     f'<span class="label">&nbsp;<b>Outputs:</b>&nbsp;</span><span class="value">&nbsp;{recipients}&nbsp;</span>' \
