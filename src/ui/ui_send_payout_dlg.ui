@@ -88,7 +88,7 @@
           </item>
           <item>
            <property name="text">
-            <string>Ghostnode Address</string>
+            <string>MUEnode Address</string>
            </property>
           </item>
          </widget>
@@ -260,7 +260,7 @@
             <item>
              <widget class="QLabel" name="lbl_src_masternode">
               <property name="text">
-               <string>Ghostnode</string>
+               <string>MUEnode</string>
               </property>
              </widget>
             </item>
