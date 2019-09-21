@@ -899,7 +899,7 @@ class WalletDlg(QDialog, ui_send_payout_dlg.Ui_SendPayoutDlg, WndUtils):
                         last_level2_nr = addr_scan_ctrl.get('level2')
                         while True:
                             restart_iteration = False
-                            for nr in range(40000):
+                            for nr in range(500000):
                                 if self.finishing or thread_ctrl.finish:
                                     return
                                 if last_level2_nr != addr_scan_ctrl.get('level2'):
