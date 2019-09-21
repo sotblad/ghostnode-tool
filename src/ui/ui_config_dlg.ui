@@ -36,7 +36,7 @@
      </property>
      <widget class="QWidget" name="tabDashd">
       <attribute name="title">
-       <string>NIX network</string>
+       <string>MUE network</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <property name="spacing">
@@ -59,7 +59,7 @@
          <item>
           <widget class="QLabel" name="label_2">
            <property name="text">
-            <string>NIX network:</string>
+            <string>MUE network:</string>
            </property>
           </widget>
          </item>
