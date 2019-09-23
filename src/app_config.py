@@ -110,7 +110,7 @@ class AppConfig(object):
         # runtime information, set after connecting to hardware wallet device; for Dash mainnet the value is
         # 'Dash', for Dash testnet, the value is 'Dash Testnet' or 'tDash' depending on the (custom) firmware
         # used
-        self.hw_coin_name = 'MUE'
+        self.hw_coin_name = 'MonetaryUnit'
 
         # attributes related to encryption cache data with hardware wallet:
         self.hw_generated_key = b"\xab\x0fs}\x8b\t\xb4\xc3\xb8\x05\xba\xd1\x96\x9bq`I\xed(8w\xbf\x95\xf0-\x1a\x14\xcb\x1c\x1d+\xcd"
